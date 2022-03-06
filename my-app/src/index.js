@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import EventSimulator from './EventSimulator/index.js';
 
 function Square(props) {
   return (
@@ -89,7 +90,7 @@ class Game extends React.Component {
 // ========================================
 
 ReactDOM.render(
-  <Game />,
+  <EventSimulator />,
   document.getElementById('root')
 );
 
