@@ -22,24 +22,31 @@ export default class EventSimulator extends React.Component {
         this.setState({
             [name]: event.target.value
         });
-      }
-    
-      handleSubmit(event) {
-        alert('SUBMIT! Last pleading: ' + this.state.last_leading_date + ' | Pre trial: ' + this.state.pre_trial_date);
+    }
 
-        fetch('https://localhost:7296/EventSimulator?lastPleadingDate=' + this.state.last_leading_date + '&preTrialDate=' + this.state.pre_trial_date)
-        .then(response => response.json())
-        .then(data => console.log(data));
-        // .then(response => { 
-        //     //response.json();
-        //     alert("data: " + response.json());
-        // })
-        // .then(data => { 
-        //     console.log(data);
-        //     alert("data: " + data);
-        // });
+    handleSubmit(event) {
+      const eventSimulatorUri = 'https://localhost:7296/EventSimulator';
+      fetch(eventSimulatorUri + '?lastPleadingDate=' + this.state.last_leading_date + '&preTrialDate=' + this.state.pre_trial_date)
+      .then(response => response.json())
+      .then(data => { 
+        console.log(data);
+        this.renderResult(data);
+      })
+      //.then(data => )
 
-        event.preventDefault();
+      event.preventDefault();
+    }
+
+    renderResult(data) {
+      //https://reactjs.org/docs/lists-and-keys.html
+      const events = data.map((event) =>
+        <li>{event.description + ' ' + event.dateString}</li>
+      );
+
+      ReactDOM.render(
+        <ul>{events}</ul>,
+        document.getElementById('simulatedEvents')
+      );
     }
 
     render() {
@@ -56,6 +63,8 @@ export default class EventSimulator extends React.Component {
                 <br />
             <input type="submit" value="Run Simulation" />
           </form>
+          <br />
+          <div id='simulatedEvents'></div>
         </div>
       );
     }
