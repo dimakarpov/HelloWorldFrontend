@@ -1,19 +1,18 @@
-.simulatorTable {
+/*.simulatorTable {
     margin-left: auto;
     margin-right: auto;
     font-size: 20px;
-}
+}*/
 
 .simulatorHeader {
     font-size: 24px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .simulatorSubmitButton {
     margin-top: 10%;
 }
 
-.simulatorSubmitButtonContainer {
+/*.simulatorSubmitButtonContainer {
     text-align: center;
-    font-size: 20px;
-}
+}*/
