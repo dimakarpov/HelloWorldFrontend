@@ -52,16 +52,32 @@ export default class EventSimulator extends React.Component {
     render() {
       return (
         <div>
-          <form  onSubmit={this.handleSubmit}>
-                <label>Last pleading date:
-                    <input type="date" name="last_leading_date" value={this.state.value} onChange={this.handleChange} placeholder='dd-mm-yyyy' />
+          <form onSubmit={this.handleSubmit}>
+            <table className='simulatorTable'>
+            <tr>
+              <td colSpan={2}><p className='simulatorHeader'>סימולטור מועדים</p></td>
+            </tr>
+            <tr>
+              <td>תאריך תביעה אחרון:</td>
+              <td><input type="date" name="last_leading_date" value={this.state.value} onChange={this.handleChange} className='simulatorInput' /></td>
+            </tr>
+            <tr>
+              <td>תאריך קדם משפט:</td>
+              <td><input type="date" name="pre_trial_date" value={this.state.value} onChange={this.handleChange} className='simulatorInput' /></td>
+            </tr>
+            <tr>
+              <td colSpan={2} className='simulatorSubmitButtonContainer'><input type="submit" value="הצג מועדים" className='simulatorSubmitButton' /></td>
+            </tr>
+            </table>
+                {/* <label>תאריך תביעה אחרון:
+                    <input type="date" name="last_leading_date" value={this.state.value} onChange={this.handleChange} className='simulatorInput' />
                 </label>
                 <br />
-                <label>Pre trial date:
-                    <input type="date" name="pre_trial_date" value={this.state.value} onChange={this.handleChange} placeholder='dd-mm-yyyy' />
+                <label>תאריך קדם משפט:
+                    <input type="date" name="pre_trial_date" value={this.state.value} onChange={this.handleChange} className='simulatorInput' />
                 </label>
-                <br />
-            <input type="submit" value="Run Simulation" />
+                <br /> */}
+            {/* <input type="submit" value="הצג מועדים" /> */}
           </form>
           <br />
           <div id='simulatedEvents'></div>
